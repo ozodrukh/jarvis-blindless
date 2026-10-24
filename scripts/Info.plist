@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>CFBundleName</key><string>Джарвис</string>
+  <key>CFBundleDisplayName</key><string>Джарвис</string>
+  <key>CFBundleIdentifier</key><string>local.blindless.jarvis</string>
+  <key>CFBundleExecutable</key><string>Jarvis</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>0.2.0</string>
+  <key>CFBundleVersion</key><string>2</string>
+  <key>LSMinimumSystemVersion</key><string>14.0</string>
+  <key>NSPrincipalClass</key><string>NSApplication</string>
+  <key>NSMicrophoneUsageDescription</key><string>Джарвис локально слушает обращение по имени. Запросы обрабатываются локально или через выбранный вами онлайн-сервис, согласно файлу настроек.</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSSupportsAutomaticTermination</key><false/>
+</dict></plist>

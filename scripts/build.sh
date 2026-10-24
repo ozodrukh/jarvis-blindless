@@ -1,0 +1,28 @@
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+ROOT="$PWD"
+DIST="$ROOT/dist"
+APP="$DIST/Джарвис.app"
+mkdir -p .build "$APP/Contents/MacOS" "$APP/Contents/Resources/voice" "$DIST/tools"
+rm -rf "$APP/Contents/Resources/voice/__pycache__"
+export CLANG_MODULE_CACHE_PATH="$ROOT/.build/clang-cache"
+SWIFT_ARGS=(--disable-sandbox --build-system native --cache-path "$ROOT/.build/cache" --config-path "$ROOT/.build/config" --security-path "$ROOT/.build/security")
+swift build "${SWIFT_ARGS[@]}" -c release --product Jarvis
+BIN_DIR="$(swift build "${SWIFT_ARGS[@]}" -c release --show-bin-path)"
+cp "$BIN_DIR/Jarvis" "$APP/Contents/MacOS/Jarvis"
+cp scripts/Info.plist "$APP/Contents/Info.plist"
+cp voice/worker.py voice/logic.py voice/configuration.py voice/providers.py voice/setup_models.py "$APP/Contents/Resources/voice/"
+codesign --force --sign - "$APP"
+cp "$(command -v uv)" "$DIST/tools/uv"
+cp licenses/uv-* "$DIST/tools/"
+cp voice/requirements.lock "$DIST/requirements.lock"
+cp scripts/setup.command "$DIST/Настроить Джарвиса.command"
+chmod +x "$DIST/Настроить Джарвиса.command" "$DIST/tools/uv"
+cp README.md "$DIST/ПРОЧИТАЙТЕ.md"
+cp jarvis-config.example.json "$DIST/"
+cp docs/testing-with-friend.md "$DIST/Проверка с другом.md"
+mkdir -p "$DIST/audiobooks/demo"
+cp audiobooks/meta.json "$DIST/audiobooks/"
+cp audiobooks/demo/*.aiff "$DIST/audiobooks/demo/"
+printf '\nПриложение собрано: %s\n' "$APP"

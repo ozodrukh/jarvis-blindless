@@ -1,0 +1,16 @@
+.build/
+.runtime/
+dist/
+__pycache__/
+*.pyc
+.DS_Store
+audiobooks/**/*.aiff
+audiobooks/**/*.mp3
+audiobooks/**/*.m4a
+audiobooks/**/*.m4b
+audiobooks/**/*.wav
+audiobooks/
+release_audios
+.swiftpm/
+jarvis-config.json
+*.key

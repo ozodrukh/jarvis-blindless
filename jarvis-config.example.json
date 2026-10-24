@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "stt": {
+    "mode": "offline",
+    "model": "whisper",
+    "language": "ru",
+    "api_format": "openrouter"
+  },
+  "llm": {
+    "mode": "online",
+    "model": "YOUR_LLM_MODEL",
+    "base_url": "https://openrouter.ai/api/v1",
+    "api_key": "",
+    "api_key_env": "OPENROUTER_API_KEY",
+    "response_format": "json_schema",
+    "max_tokens": 768
+  },
+  "tts": {
+    "mode": "online",
+    "model": "YOUR_TTS_MODEL",
+    "base_url": "https://openrouter.ai/api/v1",
+    "api_key": "",
+    "api_key_env": "OPENROUTER_API_KEY",
+    "voice": "YOUR_VOICE_ID",
+    "response_format": "mp3",
+    "pcm_sample_rate_hz": 24000,
+    "pcm_channels": 1,
+    "local_voice": "",
+    "language": "ru-RU"
+  },
+  "network": {
+    "timeout_seconds": 8,
+    "total_timeout_seconds": 18,
+    "max_retries": 1,
+    "retry_delay_seconds": 0.5
+  },
+  "audio": {
+    "speech_threshold": 0.0008,
+    "wake_threshold": 0.0005,
+    "vad_threshold": 0.4,
+    "end_silence_seconds": 1.2,
+    "max_utterance_seconds": 28,
+    "wake_interval_seconds": 0.8,
+    "normalize_gain_limit": 12,
+    "target_rms": 0.035,
+    "voice_processing": true
+  },
+  "conversation": {
+    "silence_timeout_seconds": 15,
+    "end_phrases": ["закончили", "конец разговора", "заверши разговор", "end chat"]
+  }
+}
